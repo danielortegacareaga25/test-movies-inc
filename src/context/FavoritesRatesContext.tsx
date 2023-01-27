@@ -45,7 +45,10 @@ export const FavoritesRatesProvider = ({children}: any) => {
   };
 
   const setRateMovie = (idMovie: number, rate: number) => {
-    setMoviesRated(movies => [...movies, {idMovie, rate}]);
+    const moviesFiltered = moviesRated.filter(
+      movie => movie.idMovie === idMovie,
+    );
+    setMoviesRated([...moviesFiltered, {idMovie, rate}]);
   };
 
   const getRateMovie = (
