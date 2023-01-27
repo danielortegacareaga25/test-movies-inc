@@ -9,11 +9,9 @@ import {FavoritesRatesContext} from '../context/FavoritesRatesContext';
 
 interface Props {
   movie: Movie | MovieFavorite;
-  height?: number;
-  width?: number;
 }
 
-const MovieCard: FC<Props> = ({movie, height = 460, width = 300}) => {
+const MovieCard: FC<Props> = ({movie}) => {
   const uri = uriImage(movie.poster_path);
   const navigation = useNavigation();
 
@@ -23,8 +21,6 @@ const MovieCard: FC<Props> = ({movie, height = 460, width = 300}) => {
   return (
     <View
       style={{
-        width,
-        height,
         ...styles.container,
       }}>
       <Pressable
@@ -81,6 +77,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   container: {
+    height: 460,
+    width: 300,
     marginHorizontal: 2,
     paddingBottom: 20,
     paddingHorizontal: 7,
@@ -95,11 +93,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.24,
     shadowRadius: 7,
     elevation: 9,
+    borderTopLeftRadius: 20,
+    borderTopEndRadius: 20,
   },
   image: {
     height: '80%',
-    borderTopLeftRadius: 20,
-    borderTopEndRadius: 20,
   },
   containerDescription: {
     paddingTop: 5,
