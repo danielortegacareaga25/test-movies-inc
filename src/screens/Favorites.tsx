@@ -13,7 +13,6 @@ interface Props extends StackScreenProps<RootStackParams, 'FavoritesScreen'> {}
 
 const Favorites: FC<Props> = ({navigation}) => {
   const {moviesFavorites} = useContext(FavoritesRatesContext);
-  const {top} = useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <ListMovieCard movies={moviesFavorites} title="Favoritos" />

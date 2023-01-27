@@ -14,25 +14,35 @@ export const useMovieDetails = (id: number) => {
     isLoading: true,
     movieFull: undefined,
   });
+  const [error, setError] = useState<String | null>(null);
 
   const getMovieDetais = async () => {
-    const movieDefailsPromise = moviesApi.get<MovieFull>(`/${id}`);
-    const castPromise = moviesApi.get<CreditsResponse>(`/${id}/credits`);
+    try {
+      const movieDefailsPromise = moviesApi.get<MovieFull>(`/${id}`);
+      const castPromise = moviesApi.get<CreditsResponse>(`/${id}/credits`);
 
-    const [movieDetail, cast] = await Promise.all([
-      movieDefailsPromise,
-      castPromise,
-    ]);
-    setState({
-      movieFull: movieDetail.data,
-      cast: cast.data.cast,
-      isLoading: false,
-    });
+      const [movieDetail, cast] = await Promise.all([
+        movieDefailsPromise,
+        castPromise,
+      ]);
+      setState({
+        movieFull: movieDetail.data,
+        cast: cast.data.cast,
+        isLoading: false,
+      });
+    } catch {
+      setError('Ocurrio un problema');
+      setState({
+        movieFull: undefined,
+        cast: [],
+        isLoading: false,
+      });
+    }
   };
 
   useEffect(() => {
     getMovieDetais();
   }, []);
 
-  return {...state};
+  return {...state, error};
 };

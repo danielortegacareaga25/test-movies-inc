@@ -24,7 +24,6 @@ export const useMovies = (idRecommendation: number = 0) => {
       } = await moviesApi.get<MoviesResponse>('/now_playing', {
         params: {page: 1},
       });
-      console.log('moviesNowPlaying');
       if (moviesNowPlaying.length) {
         const responseRecommendations = await moviesApi.get<MoviesResponse>(
           `/${idRecommendation || moviesNowPlaying[0].id}/recommendations`,
