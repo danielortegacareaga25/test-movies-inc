@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect} from 'react';
 import moviesApi from '../api/moviesApi';
 import {Cast, CreditsResponse} from '../interfaces/credits.interfaces';
