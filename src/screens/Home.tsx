@@ -8,11 +8,22 @@ import Loader from '../components/Loader';
 import ListMovieCard from '../components/ListMovieCard';
 import {COLORS} from '../const/colors.const';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {FavoritesRatesContext} from '../context/FavoritesRatesContext';
+import {useEffect} from 'react';
+import {useMoviesRecommendations} from '../hooks/useMoviesRecommendations';
 
 interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'> {}
 
 const Home: FC<Props> = ({navigation}) => {
-  const {isLoading, nowPlaying, recommendations} = useMovies();
+  const {moviesFavorites} = useContext(FavoritesRatesContext);
+  const {isLoading, moviesPlaying} = useMovies();
+  const {moviesRecommended, setIdMovieRoot} = useMoviesRecommendations();
+
+  useEffect(() => {
+    if (moviesFavorites.length) {
+      setIdMovieRoot(moviesFavorites[0].id);
+    }
+  }, [setIdMovieRoot, moviesFavorites]);
 
   const {top} = useSafeAreaInsets();
   return isLoading ? (
@@ -20,11 +31,15 @@ const Home: FC<Props> = ({navigation}) => {
   ) : (
     <ScrollView>
       <View style={{marginTop: top, ...styles.container}}>
-        <ListMovieCard movies={nowPlaying} title="Peliculas reproduciendo" />
-        <ListMovieCard
-          movies={recommendations}
-          title="Peliculas recomendadas"
-        />
+        <ListMovieCard movies={moviesPlaying} title="Peliculas reproduciendo" />
+        {moviesRecommended.length ? (
+          <ListMovieCard
+            movies={moviesRecommended}
+            title="Peliculas recomendadas"
+          />
+        ) : (
+          <></>
+        )}
       </View>
       <Pressable
         style={styles.containerheart}
