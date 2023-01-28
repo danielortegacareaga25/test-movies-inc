@@ -3,7 +3,7 @@ import moviesApi from '../api/moviesApi';
 import {Movie, MoviesResponse} from '../interfaces/movies.interfaces';
 import {orderByNameAsc} from '../utils/movies.util';
 
-export const useMovies = () => {
+export const useMoviesPlaying = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<String | null>(null);
   const [moviesPlaying, setMoviesPlaying] = useState<Movie[]>([]);

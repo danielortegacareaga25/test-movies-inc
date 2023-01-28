@@ -1,7 +1,7 @@
 import {View, ScrollView, StyleSheet, Pressable, Text} from 'react-native';
 import React, {FC, useContext} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useMovies} from '../hooks/useMovies';
+import {useMoviesPlaying} from '../hooks/useMoviesPlaying';
 import {RootStackParams} from '../routes/Navigation';
 import {StackScreenProps} from '@react-navigation/stack';
 import Loader from '../components/Loader';
@@ -16,7 +16,7 @@ interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'> {}
 
 const Home: FC<Props> = ({navigation}) => {
   const {moviesFavorites} = useContext(FavoritesRatesContext);
-  const {isLoading, moviesPlaying} = useMovies();
+  const {isLoading, moviesPlaying} = useMoviesPlaying();
   const {moviesRecommended, setIdMovieRoot} = useMoviesRecommendations();
 
   useEffect(() => {
