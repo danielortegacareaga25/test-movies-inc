@@ -22,8 +22,10 @@ const Home: FC<Props> = ({navigation}) => {
   useEffect(() => {
     if (moviesFavorites.length) {
       setIdMovieRoot(moviesFavorites[0].id);
+    } else if (moviesPlaying.length) {
+      setIdMovieRoot(moviesPlaying[0].id);
     }
-  }, [setIdMovieRoot, moviesFavorites]);
+  }, [setIdMovieRoot, moviesFavorites, moviesPlaying]);
 
   const {top} = useSafeAreaInsets();
   return isLoading ? (
