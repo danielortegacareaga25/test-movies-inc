@@ -43,5 +43,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "eslintConfig": {
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
+    }
   }
 }

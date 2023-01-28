@@ -30,7 +30,9 @@ export const useMoviesRecommendations = () => {
   };
 
   useEffect(() => {
-    if (idMovieRoot) getMoviesRecommendations();
+    if (idMovieRoot) {
+      getMoviesRecommendations();
+    }
   }, [idMovieRoot]);
 
   return {
