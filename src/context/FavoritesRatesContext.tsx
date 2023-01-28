@@ -58,7 +58,9 @@ export const FavoritesRatesProvider = ({children}: any) => {
   ): number => {
     const movie = moviesRated.find(mov => mov.idMovie === idMovie);
     return movie
-      ? (voteAverage * voteCount + movie.rate) / (voteCount + 1)
+      ? Number(
+          ((voteAverage * voteCount + movie.rate) / (voteCount + 1)).toFixed(2),
+        )
       : voteAverage;
   };
 

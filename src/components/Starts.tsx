@@ -26,7 +26,7 @@ const Starts: FC<Props> = ({movieId}) => {
       <Text style={styles.reviewText}>Tu opinión</Text>
       <View style={styles.containerStars}>
         {starsArr.map((_, idx) => (
-          <Pressable onPress={() => handlerRate(idx)}>
+          <Pressable key={idx} onPress={() => handlerRate(idx)}>
             <Icon
               name={idx < rate ? 'star' : 'star-outline'}
               size={50}
