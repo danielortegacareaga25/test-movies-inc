@@ -16,7 +16,7 @@ const ListCast: FC<Props> = ({cast}) => {
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       style={{marginTop: 10, height: 70}}
-      ItemSeparatorComponent={<View style={{marginHorizontal: 5}} />}
+      ItemSeparatorComponent={() => <View style={{marginHorizontal: 5}} />}
     />
   );
 };

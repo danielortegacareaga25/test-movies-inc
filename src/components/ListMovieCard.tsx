@@ -14,7 +14,7 @@ const ListMovieCard: FC<Props> = ({movies, title}) => {
   return (
     <>
       <Text style={styles.titleMain}>{title}</Text>
-      <View style={{height: 440}}>
+      <View style={styles.containerCarousel}>
         <Carousel
           data={movies}
           renderItem={({item}: any) => <MovieCard movie={item} />}
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 20,
+  },
+  containerCarousel: {
+    height: 440,
   },
 });
 
