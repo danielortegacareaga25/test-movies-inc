@@ -18,7 +18,6 @@ interface ContextProps {
     voteAverage?: number,
     voteCount?: number,
   ) => number;
-  moviesRated: MovieRated[];
 }
 
 export const FavoritesRatesContext = createContext({} as ContextProps);
@@ -68,7 +67,6 @@ export const FavoritesRatesProvider = ({children}: any) => {
     <FavoritesRatesContext.Provider
       value={{
         favorites,
-        moviesRated,
         moviesFavorites,
         setFavorite,
         setRateMovie,
